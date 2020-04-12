@@ -1,5 +1,5 @@
 {
-  "name": "jwt-refresh",
+  "name": "jwt-refresh-manager",
   "version": "1.0.0",
   "description": "Package helper for refreshing token in jwt. token data will store to file",
   "main": "index.ts",
