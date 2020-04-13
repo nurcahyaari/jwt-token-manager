@@ -8,7 +8,7 @@ require("mocha");
 const fs_1 = __importDefault(require("fs"));
 const jwt_refresh_1 = require("../lib/jwt-refresh");
 describe('jwt manager will delete and saved data', () => {
-    const manager = new jwt_refresh_1.JwtRefreshManager('./tmp/tokens.txt');
+    const manager = new jwt_refresh_1.JwtRefreshManager('tmp/tokens.txt');
     it("should saved data and create file.json", () => {
         chai_1.expect(manager.saveToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5kZXYiLCJpYXQiOjE1ODY3MDMzNDMsImV4cCI6MTU4OTI5NTM0M30.ZxMJMxh8Ucr0uGhykGJZIq3w423Tc9FTHxrOJS8-Ffw"))
             .is.a("boolean");

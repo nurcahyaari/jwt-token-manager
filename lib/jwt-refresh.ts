@@ -42,7 +42,7 @@ export class JwtRefreshManager {
       }
       return true;
     } catch (err) {
-      return false;
+      throw new Error(err);
     }
   }
 
