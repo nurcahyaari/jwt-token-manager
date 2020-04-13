@@ -1,13 +1,21 @@
 {
   "name": "jwt-refresh-manager",
-  "version": "1.0.0",
+  "version": "1.0.31",
   "description": "Package helper for refreshing token in jwt. token data will store to file",
-  "main": "index.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
     "start": "tsc && node dist/index.js",
-    "build" : "tsc",
+    "build": "tsc",
     "dev": "ts-node ",
-    "test": "mocha -r ts-node/register tests/*.ts"
+    "test": "mocha -r ts-node/register tests/*.ts",
+    "format": "prettier --write \"lib/**/*.ts\" \"lib/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A lib",
+    "postversion": "git push && git push --tags"
   },
   "keywords": [
     "jwt",
@@ -23,7 +31,11 @@
     "@types/node": "^13.11.1",
     "chai": "^4.2.0",
     "mocha": "^7.1.1",
+    "prettier": "^2.0.4",
     "ts-node": "^8.7.0",
+    "tslint": "^6.1.1",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.8.3"
-  }
+  },
+  "files" : ["build/**/*"]
 }

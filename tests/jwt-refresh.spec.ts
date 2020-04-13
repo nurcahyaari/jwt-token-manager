@@ -6,7 +6,7 @@ import fs from 'fs';
 import {JwtRefreshManager} from '../lib/jwt-refresh';
 
 describe('jwt manager will delete and saved data', (): void => { 
-    const manager = new JwtRefreshManager();
+    const manager = new JwtRefreshManager('./tmp/tokens.txt');
     it("should saved data and create file.json", () => {
         expect(manager.saveToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5kZXYiLCJpYXQiOjE1ODY3MDMzNDMsImV4cCI6MTU4OTI5NTM0M30.ZxMJMxh8Ucr0uGhykGJZIq3w423Tc9FTHxrOJS8-Ffw"))
         .is.a("boolean");
@@ -43,7 +43,7 @@ describe('jwt manager will delete and saved data', (): void => {
         .to.be.a("boolean")
         .to.be.equal(true);
 
-        fs.unlinkSync("./tmp/tokens.txt");
+        // fs.unlinkSync("./tmp/tokens.txt");
     })
 
 });

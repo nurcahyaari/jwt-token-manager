@@ -1,5 +1,1 @@
-import {JwtRefreshManager} from './lib/jwt-refresh';
-
-export default {
-    JwtRefreshManager : JwtRefreshManager
-};
+export {JwtRefreshManager} from './lib/jwt-refresh';
