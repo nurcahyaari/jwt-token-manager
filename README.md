@@ -8,30 +8,30 @@ when you generate jwt token maybe you will generate a jwt refresh token too. so 
 
 # How to use
 
-		npm install jwt-refresh-manager --save
+npm install jwt-refresh-manager --save
 
 
 first we initialize JwtRefreshManager class
 ```bash
-	const  manager  =  new  JwtRefreshManager('tmp/tokens.txt', 'test123');
+const  manager  =  new  JwtRefreshManager('tmp/tokens.txt', 'test123');
 ```
 JwtRefreshManager construct have 2 parameter. first parameter is using for to get location of your file, and the second parameter is using for to get your encryption key
 <hr>
 for storing token to file
 
 ```bash
-	const isSaved = manager.saveToken("token123"); // boolean
+const isSaved = manager.saveToken("token123"); // boolean
 ```
 <hr>
 for check your token in your file
 
 ```bash
-	const haveToken = manager.checkToken("token123"); // boolean
+const haveToken = manager.checkToken("token123"); // boolean
 ```
 
 for check your token in your file then save a new token
 
 ```bash
-	const haveToken = manager.refreshToken("newToken123", "token123"); // boolean
+const haveToken = manager.refreshToken("newToken123", "token123"); // boolean
 ```
 
