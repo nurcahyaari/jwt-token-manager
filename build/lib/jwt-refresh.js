@@ -11,8 +11,8 @@ const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const crypto = __importStar(require("crypto"));
 class JwtRefreshManager {
-    constructor(keyEncription = '2f3b9b0455a70009d6ccdefb31cfcef9') {
-        this.DIR_PATH = './tmp/tokens.txt';
+    constructor(source, keyEncription = '2f3b9b0455a70009d6ccdefb31cfcef9') {
+        this.DIR_PATH = source;
         this.dirPath = path.dirname(this.DIR_PATH);
         this.keyEncription = keyEncription;
     }

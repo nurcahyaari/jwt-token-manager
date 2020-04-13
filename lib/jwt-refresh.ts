@@ -10,7 +10,7 @@ export class JwtRefreshManager {
   private keyEncription: string;
 
   constructor(source:string, keyEncription = '2f3b9b0455a70009d6ccdefb31cfcef9') {
-    this.DIR_PATH = source;
+    this.DIR_PATH = `${process.cwd()}/${source}`;
     this.dirPath = path.dirname(this.DIR_PATH);
     this.keyEncription = keyEncription;
   }

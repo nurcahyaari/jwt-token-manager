@@ -1,6 +1,6 @@
 {
   "name": "jwt-refresh-manager",
-  "version": "1.0.31",
+  "version": "1.0.33",
   "description": "Package helper for refreshing token in jwt. token data will store to file",
   "main": "build/index.js",
   "types": "build/index.d.ts",

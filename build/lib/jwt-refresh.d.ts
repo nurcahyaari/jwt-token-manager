@@ -3,7 +3,7 @@ export declare class JwtRefreshManager {
     private DIR_PATH;
     private dirPath;
     private keyEncription;
-    constructor(keyEncription?: string);
+    constructor(source: string, keyEncription?: string);
     saveToken(token: string): boolean;
     getTokens(): TokenInterface[];
     refreshToken(token: string, refreshToken: string): boolean;
