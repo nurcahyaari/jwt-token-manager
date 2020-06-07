@@ -8,17 +8,19 @@ export class JwtRefreshManager {
   private DIR_PATH: string;
   private dirPath: any;
   private keyEncription: string;
+  private keyIv: string;
 
-  constructor(source:string, keyEncription = '2f3b9b0455a70009d6ccdefb31cfcef9') {
+  constructor(source:string, keyEncription = '2f3b9b0455a7000943t34', keyIv: string = '2353er23rfewr3fer3') {
     this.DIR_PATH = `${process.cwd()}/${source}`;
     this.dirPath = path.dirname(this.DIR_PATH);
-    this.keyEncription = keyEncription;
+    this.keyEncription = keyEncription.slice(0,16);
+    this.keyIv = keyIv.slice(0,16);
   }
 
   saveToken(token: string) {
     // first we encrypt key using aes-128-cbc file
     try {
-      const cipher: any = crypto.createCipher('aes-128-cbc', this.keyEncription);
+      const cipher: any = crypto.createCipheriv('aes-128-cbc', this.keyEncription, this.keyIv);
       token = cipher.update(token, 'utf8', 'hex');
       token += cipher.final('hex');
 
@@ -54,13 +56,12 @@ export class JwtRefreshManager {
 
   refreshToken(token: string, refreshToken: string): boolean {
     const isTokenAvailable: boolean = this.checkToken(refreshToken);
-
     if (isTokenAvailable) {
       const tokenFromSource: string = fs.readFileSync(this.DIR_PATH, { encoding: 'utf8' });
       const tokens: TokenInterface[] = JSON.parse(tokenFromSource);
       let dechiper: any;
       const newToken: any = tokens.filter((data) => {
-        const createDeciper: any = crypto.createDecipher('aes-128-cbc', this.keyEncription);
+        const createDeciper: any = crypto.createDecipheriv('aes-128-cbc', this.keyEncription, this.keyIv);
         dechiper = createDeciper.update(data.token, 'hex', 'utf8');
         dechiper += createDeciper.final('utf8');
 
@@ -77,10 +78,9 @@ export class JwtRefreshManager {
   checkToken(refreshToken: string): boolean {
     const tokenFromSource: string = fs.readFileSync(this.DIR_PATH, { encoding: 'utf8' });
     const tokens: TokenInterface[] = JSON.parse(tokenFromSource);
-
     let dechiper: any;
     const savedRefreshToken: any = tokens.filter((data) => {
-      const createDeciper: any = crypto.createDecipher('aes-128-cbc', this.keyEncription);
+      const createDeciper: any = crypto.createDecipheriv('aes-128-cbc', this.keyEncription, this.keyIv);
       dechiper = createDeciper.update(data.token, 'hex', 'utf8');
       dechiper += createDeciper.final('utf8');
       if (dechiper === refreshToken && data.used === 0) {

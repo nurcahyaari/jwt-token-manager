@@ -1,6 +1,6 @@
 {
   "name": "jwt-refresh-manager",
-  "version": "1.0.331",
+  "version": "1.0.42",
   "description": "Package helper for refreshing token in jwt. token data will store to file",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -37,5 +37,7 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.8.3"
   },
-  "files" : ["build/**/*"]
+  "files": [
+    "build/**/*"
+  ]
 }

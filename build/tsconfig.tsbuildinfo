@@ -118,8 +118,8 @@
         "signature": "10a61486080fc514bddb81663e6b5edaae973485cc60bc8a49ce6b13d0a4aad5"
       },
       "../lib/jwt-refresh.ts": {
-        "version": "5686655a2eb0d1ef947d8ffc57006bc2b1b4c08638345577d0fe24044456d30a",
-        "signature": "26af68cb8afaa0376c6cb58734ca83b9fa668499a329bdba21242a7e02836eb5"
+        "version": "c1425fefc3e0743cb4e11748f41fabad32693a7f0535ede397881c4f1ec89ee5",
+        "signature": "56df60eca5758e4538759ab865734d074aa62ef93f40d56e097dd70b24e39f03"
       },
       "../index.ts": {
         "version": "50151439bdf0db4dbb4471af4ddd61635b8f1ee188d3ef1fae207e9df538abe4",
@@ -134,7 +134,7 @@
         "signature": "f24768499dab9a34c0aff9c9e3fbfe5117001bfabba4a1db01a17df086d6a606"
       },
       "../tests/jwt-refresh.spec.ts": {
-        "version": "3af1a8a073fcc02d9c12f346c43b7d16984f5e702fae927fe603fa3566391752",
+        "version": "d7a6cb5656d93ac4aba3d36a2e73a2a5db17e626df5c1498a048443f8bbee84a",
         "signature": "95aa95996f884804dc6ebc7b4d271fa1a57b7b68911464a7193a307c56748d16"
       },
       "../node_modules/@types/node/globals.d.ts": {
@@ -1491,10 +1491,8 @@
       "../node_modules/typescript/lib/lib.es2020.bigint.d.ts",
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../lib/token.interface.ts",
-      "../index.ts",
       "../node_modules/@types/chai/index.d.ts",
       "../node_modules/@types/mocha/index.d.ts",
-      "../tests/jwt-refresh.spec.ts",
       "../node_modules/@types/node/globals.d.ts",
       "../node_modules/@types/node/assert.d.ts",
       "../node_modules/@types/node/async_hooks.d.ts",
@@ -1540,7 +1538,9 @@
       "../node_modules/@types/node/ts3.2/util.d.ts",
       "../node_modules/@types/node/ts3.2/globals.d.ts",
       "../node_modules/@types/node/ts3.2/index.d.ts",
-      "../lib/jwt-refresh.ts"
+      "../lib/jwt-refresh.ts",
+      "../tests/jwt-refresh.spec.ts",
+      "../index.ts"
     ]
   },
   "version": "3.8.3"

@@ -11,14 +11,15 @@ const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const crypto = __importStar(require("crypto"));
 class JwtRefreshManager {
-    constructor(source, keyEncription = '2f3b9b0455a70009d6ccdefb31cfcef9') {
+    constructor(source, keyEncription = '2f3b9b0455a7000943t34', keyIv = '2353er23rfewr3fer3') {
         this.DIR_PATH = `${process.cwd()}/${source}`;
         this.dirPath = path.dirname(this.DIR_PATH);
-        this.keyEncription = keyEncription;
+        this.keyEncription = keyEncription.slice(0, 16);
+        this.keyIv = keyIv.slice(0, 16);
     }
     saveToken(token) {
         try {
-            const cipher = crypto.createCipher('aes-128-cbc', this.keyEncription);
+            const cipher = crypto.createCipheriv('aes-128-cbc', this.keyEncription, this.keyIv);
             token = cipher.update(token, 'utf8', 'hex');
             token += cipher.final('hex');
             if (fs.existsSync(this.DIR_PATH)) {
@@ -57,7 +58,7 @@ class JwtRefreshManager {
             const tokens = JSON.parse(tokenFromSource);
             let dechiper;
             const newToken = tokens.filter((data) => {
-                const createDeciper = crypto.createDecipher('aes-128-cbc', this.keyEncription);
+                const createDeciper = crypto.createDecipheriv('aes-128-cbc', this.keyEncription, this.keyIv);
                 dechiper = createDeciper.update(data.token, 'hex', 'utf8');
                 dechiper += createDeciper.final('utf8');
                 if (dechiper !== refreshToken) {
@@ -74,7 +75,7 @@ class JwtRefreshManager {
         const tokens = JSON.parse(tokenFromSource);
         let dechiper;
         const savedRefreshToken = tokens.filter((data) => {
-            const createDeciper = crypto.createDecipher('aes-128-cbc', this.keyEncription);
+            const createDeciper = crypto.createDecipheriv('aes-128-cbc', this.keyEncription, this.keyIv);
             dechiper = createDeciper.update(data.token, 'hex', 'utf8');
             dechiper += createDeciper.final('utf8');
             if (dechiper === refreshToken && data.used === 0) {
